@@ -4,7 +4,7 @@ Bem-vindo ao repositório do meu site! Este é um site estático hospedado no **
 
 ## 🚀 Demonstração
 
-🔗 [Acesse o site aqui](https://seu-usuario.github.io/meu-site/)
+🔗 [Acesse o site aqui](https://clncentral.github.io/jornal/)
 
 ## 📁 Estrutura do Projeto
 
