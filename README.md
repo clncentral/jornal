@@ -32,3 +32,5 @@ Bem-vindo ao repositório do meu site! Este é um site estático hospedado no **
 │   │   ├── banner.jpg     # Banner principal
 │   │
 └── README.md          # Descrição do projeto
+
+
