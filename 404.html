@@ -1,26 +1,123 @@
-## 📁 Estrutura do Projeto
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página não encontrada - Erro 404</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Folha de estilos do Leaflet (Mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 50px;
+        }
 
-/
-│── index.html         # Página inicial
-│── about.html         # Página "Sobre"
-│── contact.html       # Página "Contato"
-│── services.html      # Página "Serviços"
-│── faq.html           # Página "FAQ"
-│── terms.html         # Termos de Serviço
-│── privacy.html       # Política de Privacidade
-│── 404.html           # Página de erro personalizada
-│
-├── assets/            # Recursos estáticos
-│   ├── css/
-│   │   ├── style.css      # Estilos principais
-│   │   ├── responsive.css # Estilos responsivos
-│   │
-│   ├── js/
-│   │   ├── main.js        # Scripts principais
-│   │   ├── contact.js     # Validação do formulário de contato
-│   │
-│   ├── img/               # Imagens do site
-│   │   ├── logo.png       # Logo do site
-│   │   ├── banner.jpg     # Banner principal
-│   │
-└── README.md          # Descrição do projeto
+        .error-container h1 {
+            font-size: 80px;
+            color: #ff5c5c;
+            margin-bottom: 10px;
+        }
+
+        .error-container p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilizando o mapa */
+        #map {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="about.html">Sobre</a>
+            <a href="contact.html">Contato</a>
+            <a href="services.html">Serviços</a>
+            <a href="faq.html">FAQ</a>
+            <a href="terms.html">Termos de Serviço</a>
+            <a href="privacy.html">Política de Privacidade</a>
+        </nav>
+    </header>
+
+    <div class="error-container">
+        <h1>404</h1>
+        <p>Oops! A página que você procura não existe.</p>
+        <p>Volte para a página inicial ou explore o mapa abaixo.</p>
+        <a href="index.html" class="btn-home">Voltar ao Início</a>
+        
+        <!-- Mapa interativo -->
+        <div id="map"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script do Leaflet.js para carregar o mapa -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Função para obter a localização do usuário
+        function obterLocalizacao() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    carregarMapa(lat, lon); // Carrega o mapa com as coordenadas do usuário
+                }, function(error) {
+                    alert("Erro ao obter a localização: " + error.message);
+                    carregarMapa(-23.5505, -46.6333); // Fallback para São Paulo caso a localização não seja obtida
+                });
+            } else {
+                alert("Geolocalização não suportada pelo navegador.");
+                carregarMapa(-23.5505, -46.6333); // Fallback para São Paulo
+            }
+        }
+
+        // Função para carregar o mapa
+        function carregarMapa(lat, lon) {
+            var map = L.map('map').setView([lat, lon], 12); // Definindo o mapa para a localização do usuário
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup('Você está aqui! 🌍')
+                .openPopup();
+        }
+
+        // Chama a função para obter a localização e carregar o mapa
+        obterLocalizacao();
+    </script>
+
+</body>
+</html>
