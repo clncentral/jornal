@@ -181,13 +181,17 @@ textarea:not(:placeholder-shown) + label {
         display: none; /* Esconde o menu por padrão em telas pequenas */
         flex-direction: column;
         gap: 10px;
-        width: 100%;
+        width: 90%;
         padding: 20px;
         background-color: #333;
         position: absolute;
         top: 60px;
         left: 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+		visibility: hidden; /* Esconde o menu por padrão */
+		opacity: 0; /* Torna o menu invisível */
+		transition: opacity 0.3s ease;
+		 z-index: 1;
     }
 
     .menu-toggle {
@@ -196,6 +200,8 @@ textarea:not(:placeholder-shown) + label {
 
     .nav-links.active {
         display: flex; /* Exibe o menu quando a classe active é adicionada */
+		visibility: visible; /* Torna o menu visível */
+		opacity: 1; /* Torna o menu opaco */
     }
 
     nav a {
