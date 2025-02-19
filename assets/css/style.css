@@ -1,28 +1,24 @@
 body {
-	font-family: 'MinhaFonte', sans-serif;
+    font-family: 'MinhaFonte', sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
     background-color: #f4f4f4;
 }
 
-header {
+header, footer {
     background-color: #333;
     color: white;
     padding: 1rem;
-}
-
-nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
+    text-align: center;
 }
 
 footer {
     margin-top: 20px;
     padding: 10px;
-    background: #333;
-    color: white;
+}
+
+.sobre, h2 {
+    text-align: center;
 }
 
 @font-face {
@@ -30,4 +26,125 @@ footer {
     src: url('caminho/para/custom-font.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 4px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f4f4f4;
+    background-color: #1a1a1a;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav a:hover {
+    background-color: #333;
+    border-color: #ff5c5c;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+nav a:active {
+    background-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #777;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label,
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
 }

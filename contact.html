@@ -1,12 +1,56 @@
-<form action="https://formspree.io/f/seu-endereco" method="POST">
-    <label>Nome:</label>
-    <input type="text" name="name" required>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornal Amador</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <label>Email:</label>
-    <input type="email" name="email" required>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="about.html">Sobre</a>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <h2>Contato</h2>
+        <form action="https://formspree.io/f/seu-endereco" method="POST">
+            <div class="form-group">
+				<input type="text" name="name" required placeholder=" " id="name">
+				<label for="name">Nome</label>
+			</div>
 
-    <label>Mensagem:</label>
-    <textarea name="message" required></textarea>
+			<div class="form-group">
+				<input type="email" name="email" required placeholder=" " id="email">
+				<label for="email">Email</label>
+			</div>
 
-    <button type="submit">Enviar</button>
-</form>
+        
+            <label>Mensagem:</label>
+            <textarea name="message" required maxlength="500" placeholder="Digite seu texto de até 500 caracteres"></textarea>
+			<p class="char-count">Caracteres restantes: <span id="charCount">500</span></p>
+
+<script>
+    const textarea = document.querySelector("textarea");
+    const charCount = document.getElementById("charCount");
+
+    textarea.addEventListener("input", () => {
+        const remaining = 500 - textarea.value.length;
+        charCount.textContent = remaining;
+        charCount.style.color = remaining < 50 ? "red" : "#777";
+    });
+</script>
+
+        
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+    
+    <footer>
+        <p class="sobre">&copy; 2025 Jornal Amador - Nenhuma verdade foi ferida na criação deste site.</p>
+    </footer>
+</body>
+</html>
